@@ -1,0 +1,81 @@
+<div class="row search-bar" style="background:#F89400; margin-bottom: 20px; margin-top:56px; color: white;">
+  <div class="col-md-4"></div>
+  <div class="col-md-4 text-center">
+    <h1>The Beer Bank</h1>
+    <p>Find your favourite beer here</p>
+    <input class="form-control" type="text" (input)=searchBeers($event) placeholder="Search for the beer name">
+  </div>
+  <div class="col-md-4"></div>
+</div>
+<!-- --------------------------------ALL Beers-------------------- -->
+<div class="container" infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="50" (scrolled)="onScroll()">
+  <div class="row" style="margin-top:80px;">
+    <div class="col-lg-4 col-md-6 col-sm-12" style="margin-bottom:20px" *ngFor="let beer of beer_list">
+      <a (click)="getDetailsById(beer.id)">
+        <div class="card" style="height:50vh;">
+          <div class="favorite_star">
+            <a (click)="setUnsetFavourite($event,beer.id)"><i [id]="'star_'+beer.id" class="fa fa-star" style="float: right;margin-top:5px; margin-right:5px;cursor:pointer;"></i></a>
+          </div>
+          <div class="card-image-wrapper" data-toggle="modal" data-target="#exampleModalLong">
+            <img class="card-img-top img-fluid" [src]="beer.image_url" alt="Card image cap">
+          </div>
+          <div class="card-body text-center">
+            <h5 class="card-title" style="color:#F89400">{{beer.name}}</h5>
+            <p class="card-text" style="color:grey;">{{beer.tagline}}</p>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+  <button (click)="scrollTopFunction()"  style="" id="myBtn" title="Go to top"><i style="color: white; font-size:40px; border: none;
+    outline: none;    -webkit-text-stroke-width: unset"
+      class="fa fa-angle-up"></i></button>
+</div>
+<!-- <------------------dialog-box---------------------------------------------- -->
+<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" *ngFor="let data of beer_data">
+        <div class="row">
+          <div class="col-md-4" style="text-align:center">
+            <img [src]="data.image_url" width="60%" alt="img">
+          </div>
+          <div class="col-md-8">
+            <h1 style="color:#F89400">{{data.name}}</h1>
+            <h3 style="color:grey">{{data.tagline}}</h3>
+            <hr align="left" style="background:indigo; height: 4px; width:100px;">
+            <strong>IBU:</strong>&nbsp;{{data.ibu}} &nbsp;&nbsp; <strong>ABV:</strong>&nbsp;{{data.abv}}&nbsp;&nbsp;
+            <strong>EBC:</strong>&nbsp;{{data.ebc}}
+            <p style="word-wrap:break-word">{{data.description}}</p>
+            <h5>Best Served With:</h5><br>
+            <ul *ngFor="let pairing of data.food_pairing">
+              <li style="line-height:2px;">{{pairing}}</li>
+            </ul>
+          </div>
+        </div><br>
+        <h2 style="color:#F89400">You might also like:</h2>
+        <div class="row" style="margin-top:20px;">
+
+          <div class="col-lg-4 col-md-6 col-sm-12" style="margin-bottom:20px" *ngFor="let beer of beer_list| slice:0:3;">
+            <a (click)="getDetailsById(beer.id)">
+              <div class="card" style="height:40vh;" data-toggle="modal" data-target="#exampleModalLong">
+                <div class="card-image-wrapper">
+                  <img class="card-img-top img-fluid" [src]="beer.image_url" alt="Card image cap">
+                </div>
+                <div class="card-body text-center">
+                  <h5 class="card-title" style="color:#F89400">{{beer.name}}</h5>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

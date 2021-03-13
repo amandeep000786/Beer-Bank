@@ -1,0 +1,91 @@
+/* You can add global styles to this file, and also import other style files */
+.bg-light {
+    background-color:#F89400!important;
+   
+}
+body{
+    background: rgba(236, 236, 236, 0.829);
+}
+.card-img-top {
+    max-height: 300px;
+    width: auto;
+    height: 100%;
+    }
+    .card-image-wrapper{
+        display: block;
+        margin: 0 auto;
+        margin-top: 10px;
+    }
+    /* .favorite_star{
+        !important;
+    } */
+    .fa, .fas {
+        font-weight: 900;
+        color: transparent;
+        -webkit-text-stroke-width: 1px;
+        -webkit-text-stroke-color: #191818;
+    }
+    
+.card:hover{
+    box-shadow: 0 1px 8px 5px rgba(0,0,0,.2), 0 1px 1px 0 rgba(0,0,0,.14), 0 1px 3px 0 rgba(0,0,0,.12);
+}
+@media (min-width: 576px){
+    .modal-dialog {
+        max-width: 50% !important;
+       
+    }
+    
+}
+@media (max-width: 576px){
+    .card{
+        height:80vh !important;
+    }
+}
+.search-bar {
+    margin-right: unset;
+    margin-left: unset;
+    height:170px;
+}
+#myBtn {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 30px;
+    z-index: 99;
+    font-size: 18px;
+    border: none;
+    height: 53px;
+    width: 63px;
+    outline: none;
+    background-color: #F89400;
+    color: white;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 4px;
+  }
+  a{
+      cursor: pointer;
+  }
+  .navbar-nav {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: unset;
+    flex-direction: unset; 
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+    float: right;
+}
+.navbar-nav .nav-link {
+    padding-right: 9px;
+    padding-left: 9px;
+}
+.navbar {
+    display: block;
+    
+}
+@media (max-width: 1400px){
+    .card{
+        height:80vh !important;
+    }
+}
